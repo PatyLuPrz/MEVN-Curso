@@ -14,4 +14,18 @@ router.post('/', async (req,res)=>{
     res.json({status:'Task saved'});
 });
 
+router.put('/:id',async (req,res)=>{
+    await Task.findByIdAndUpdate(req.params.id,req.body);
+    res.json({
+        status:'Actualizado'
+    });
+});
+
+router.delete('/:id',async (req,res)=>{
+    Task.findByIdAndRemove(req.params.id);
+    res.json({
+        status:'Eliminado'
+    });
+});
+
 module.exports = router;
