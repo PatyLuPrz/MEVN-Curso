@@ -11,20 +11,20 @@ router.get('/', async (req,res) => {
 router.post('/', async (req,res)=>{
     const task = new Task(req.body);
     await task.save();
-    res.json({status:'Task saved'});
+    res.json({status:'Saved'});
 });
 
 router.put('/:id',async (req,res)=>{
     await Task.findByIdAndUpdate(req.params.id,req.body);
     res.json({
-        status:'Actualizado'
+        status:'Updated'
     });
 });
 
 router.delete('/:id',async (req,res)=>{
-    Task.findByIdAndRemove(req.params.id);
+    await Task.findByIdAndRemove(req.params.id);
     res.json({
-        status:'Eliminado'
+        status:'Deleted'
     });
 });
 
