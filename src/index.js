@@ -1,6 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 const app = express();
+
+
+// DB Connection
+mongoose.connect('mongodb://localhost/mevn-database')
+.then(db => console.log('DB is connected'))
+.catch(err => console.error(err));
 
 // Settings
 app.set('port', process.env.PORT || 8080); // Puerto del servidor asignado
